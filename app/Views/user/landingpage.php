@@ -47,8 +47,7 @@
     </div>
     <div class="col">
       <p class="mx-3">WKTK means to be looking forward to something. The word is not a word actually, but a shortened
-        form of "wakuwaku tekateka".（ワクワク　テカテカ）Wakuwaku is a kind of onomatopoeia, which is expressing a feeling to be
-        looking forward to something. Tekateka is also a onomatopoeia expressing something is shining. The cat below
+        form of "wakuwaku tekateka". Tekateka is also a onomatopoeia expressing something is shining. The cat below
         looks like happy for something coming to next and shining. If we write with Japanese characters, it will be
         "ワクテカ". WKTK was often used befor. But recently, it's not.</p>
     </div>
