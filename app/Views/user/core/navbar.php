@@ -1,21 +1,31 @@
-<nav class="navbar navbar-expand-lg bg-secondary">
-  <div class="container-fluid">
-    <a class="navbar-brand text-light " href="landingpage">Wakuteka</a>
-    <div class="search-bar">
-      <form class="search-form d-flex align-items-center" method="POST" action="#">
-        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-      </form>
-    </div>
+<nav class="navbar navbar-expand-lg bg-body-tertiary ">
+  <div class="container">
+    <a class="navbar-brand  " href="landingpage">Wakuteka</a>
+    <ul class="nav justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link active " aria-current="page" href="<?=base_url()?>Home/produk">Collection</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Category
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">T-Shirt</a></li>
+          <li><a class="dropdown-item" href="#">Outer</a></li>
+          <li><a class="dropdown-item" href="#">Totebag</a></li>
+        </ul>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active " aria-current="page" href="<?=base_url()?>dda">News</a>
+      </li>
+    </ul>
     <ul class="nav justify-content-end">
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      </form>
       <li class="nav-item">
-        <a class="nav-link active text-light" aria-current="page" href="<?=base_url()?>Home/produk">Produk</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active text-light" aria-current="page" href="<?=base_url()?>Home/keranjang">Keranjang</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active text-light" aria-current="page" href="<?=base_url()?>Home/custom">Custom</a>
+        <a class="nav-link active " aria-current="page" href="<?=base_url()?>Home/keranjang"><i
+            class="bi bi-cart"></i></a>
       </li>
       <li>
         <?php if(empty($_SESSION['isLoggedIn'])){ ?>
