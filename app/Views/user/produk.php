@@ -17,7 +17,10 @@
         <div class="col-6 col-md-4 col-lg-3 text-center mb-2">
             <div class="container bordershadow">
                 <div class="row" id="image<?=$key?>">
-                    <img src="../../public/assets/img/produk/<?=$item['image']?>" class="w-100">
+                <a href="<?=base_url()?>products/<?=$item['code']?>">
+
+                    <img src="<?=base_url()?>assets/img/produk/<?=$item['image']?>" class="w-100">
+                </a>
                 </div>
                 <div class="row">
                     <p class="fw-bold  mb-1" ><?=$item['name']?></p>
@@ -38,19 +41,7 @@
         <?php } ?>
     </div>
 </div>
-<!--    [id_produk] => 1
-        [name] => baju baju
-        [code] => Ad
-        [code_variant] => b
-        [color] => asd
-        [size] => 4
-        [stock] => 12
-        [category] => 2
-        [sub_category] => pentek 2
-        [price] => 100000
-        [image] => -
-        [description] => asadedsadasd
-        [avail] => 1 -->
+
 <script>
     $("i[id^='wishlist-icon']").hover(function(){
         $(this).attr("class", "bi bi-heart-fill");

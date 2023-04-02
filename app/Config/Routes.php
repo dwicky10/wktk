@@ -31,6 +31,19 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 
+$routes->get('/collection', 'Home::collection');
+$routes->get('/collection/(:any)', 'Home::collection/$1');
+$routes->get('/collection/(:any)/(:any)', 'Home::collection/$1/$2');
+
+$routes->get('/products/(:any)', 'Home::products/$1');
+
+$routes->get('/lookbook', 'Home::lookbook');
+$routes->get('/news', 'Home::news');
+
+$routes->get('/checkout', 'Home::checkout');
+
+$routes->get('/login', 'Home::login');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

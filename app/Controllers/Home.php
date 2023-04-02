@@ -27,20 +27,31 @@ class Home extends BaseController
         $data['title']='register';
         return view('user/core/header',$data).view('user/register').view('user/core/footer');
     }
-    public function produk()
+    public function collection($category = "")
     {
-        $data['title']='produk';
         $model = new ProductsModel();
-        $data['products'] = $model->findAll();
+        if($category != ""){
+            $data['products'] = $model->produk_category($category);
+        }else{
+            $data['products'] = $model->findAll();
+        }
+        $data['title']='produk';
         return view('user/core/header',$data).view('user/core/navbar').view('user/produk').view('user/core/foot').view('user/core/footer');
     }
-    public function detail()
+
+    public function products($code)
     {
+        $model = new ProductsModel();
+        $data['products'] = $model->produk_code($code);
+        $data['stock'] = $model->stock_product($data['products']['0']['id_produk']);
         $data['title']='detail';
         return view('user/core/header',$data).view('user/core/navbar').view('user/detail').view('user/core/foot').view('user/core/footer');
     }
     public function checkout()
     {
+        // if(empty($_SESSION['isLoggedIn'])){
+        //     return redirect()->to(base_url().'login');
+        // }
         $data['title']='checkout';
         return view('user/core/header',$data).view('user/core/navbar').view('user/checkout').view('user/core/foot').view('user/core/footer');
     }

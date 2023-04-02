@@ -1,3 +1,27 @@
+<div class="container">
+  <div class="row my-2">
+    <div class="col-md-6">
+        <!-- detail pesanan -->
+        <p class="h5 border-bottom border-dark mt-2"> Detail Pesanan</p>
+        <div class="row">
+          <div class="col-md-3">
+            <!-- image -->
+          </div>
+          <div class="col-md-6">
+            <!-- nama-warna, harga, jumalh -->
+          </div>
+          <div class="col-md-3">
+            <!-- subtotal -->
+          </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <!-- alamat, metode pengiriman, payment detail total -->
+    </div>
+  </div>
+</div>
+
+
 <div class="container-fluid text-top mt-5 bg-warning " style="height: 45px;">
   <div class="row">
     <div class="col mt-2">
