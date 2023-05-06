@@ -9,7 +9,7 @@
 </style>
 <div class="container">
     <div class="row py-2 text-center">
-        <h3 class="fw-bold"> NEW ARRIVAL </h3>
+        <h3 class="fw-bold"> WKTK-COLLECTIONS </h3>
     </div>
     <div class="row mt-3">
 
