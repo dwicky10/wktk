@@ -73,11 +73,11 @@
                     <?php } ?>
                 </div>
             </div>
-            <form action="<?=base_url()?>checkout" method="POST">
+            <form action="<?=base_url()?>home/checkout" method="POST">
                 <div class="row mb-2">
                     <p class="mb-1"> Quantity <span class="text-danger" id="total_stock"></span> </p>
                     <div class="col-md-5 p-1 ">
-                        <select class="form-select" name="select_stock" id="select_stock"></select>
+                        <select class="form-select" name="select_stock" id="select_stock" disabled></select>
                     </div>
                     <div class="col-md-3 p-1">
                         <a class="btn btn-outline-danger w-100" href="#"> <i class="bi bi-cart"></i> Cart </a>
@@ -143,6 +143,7 @@
             }
             $("#select_stock").html(selectOptions);
             $("#total_stock").html("(Stock : "+i+")");
+            $("#select_stock").removeAttr("disabled");
         });
     });
 </script>
