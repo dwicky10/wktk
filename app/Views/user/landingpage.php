@@ -1,36 +1,27 @@
 
 <div class="container bg-secondary bg-opacity-25">
-  <div id="carouselExampleIndicators" class="carousel slide mt-4">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-        aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-        aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-        aria-label="Slide 3"></button>
+  <div id="carouselExample" class="carousel slide mt-2">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="<?=base_url()?>/assets/img/banner/tokpedbanner1-REV1.png" class="d-block w-100" alt="...">
     </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="<?=base_url()?>/assets/img/Wktk1.png" class="d-block img-fluid" style="max-height:200px;" alt="Gambar1">
-      </div>
-      <div class="carousel-item">
-        <img src="<?=base_url()?>/assets/img/wktk2.png" class="d-block img-fluid" style="max-height:200px;" alt="Gambar2">
-      </div>
-      <div class="carousel-item">
-        <img src="<?=base_url()?>/assets/img/wktk5.png" class="d-block img-fluid" style="max-height:200px;" alt="Gambar3">
-      </div>
+    <div class="carousel-item">
+      <img src="<?=base_url()?>/assets/img/banner/tokpedbanner1-REV1-bw.png" class="d-block w-100" alt="...">
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-      data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-      data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
+    <div class="carousel-item">
+      <img src="<?=base_url()?>/assets/img/banner/tokpedbanner1-REV1-bw2.png" class="d-block w-100" alt="...">
+    </div>
   </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
 </div>
 
 <div class="container-fluid text-center bg-dark bg-opacity-25">
