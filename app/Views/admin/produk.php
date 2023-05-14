@@ -1,3 +1,18 @@
+
+<!-- 
+    [id_produk] => 3
+    [name] => wktk
+    [code] => asfasf
+    [color] => asdas
+    [code_variant] => asf
+    [category] => asd
+    [sub_category] => asd
+    [price] => 123
+    [image] => 1678801289_6d3906334ddd7da2f31d.jpg
+    [gallery] => 1678801289_6d3906334ddd7da2f31d.jpg,94c81b0a-c43b-465b-8188-7a7f413f0bf1.jpg94c81b0a-c43b-465b-8188-7a7f413f0bf1.jpg,1678801289_6d3906334ddd7da2f31d.jpg
+    [description] => asd
+    [fl_avail] => 1
+ -->
 <main id="main" class="main">
 
     <div class="pagetitle">
@@ -22,12 +37,12 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">No</th>
-                                            <th scope="col">Nama | Varian | Warna | Ukuran</th>
-                                            <th scope="col">Kode</th>
+                                            <th scope="col">Nama | Varian </th>
+                                            <th scope="col">Warna | Ukuran</th>
                                             <th scope="col">Stok</th>
                                             <th scope="col">Kategori | Sub</th>
                                             <th scope="col">Harga</th>
-                                            <th scope="col">Ketersediaan</th>
+                                            <th scope="col">Aktif</th>
                                             <th scope="col">Aksi</th>
                                         </tr>
                                     </thead>
@@ -37,26 +52,26 @@
                                         <tr>
                                             <td><?= $item['id_produk'] ?></td>
                                             <td><?= $item['name'] ?> <br> 
-                                                <?= $item['code_variant'] ?> <br>
-                                                <?= $item['color'] ?> <br>
-                                                <?= $item['size'] ?></td>
-                                            <td><?= $item['code'] ?></td>
-                                            <td><?= $item['stock'] ?></td>
+                                                <?= $item['code'] ?> - <?= $item['code_variant'] ?>
+                                                </td>
+                                            <td><?= $item['color'] ?> <br> <?= $item['size'] ?></td>
+                                            <td><?= $item['stock'] ?> </td>
                                             <td><?= $item['category'] ?> <br> 
                                                 <?= $item['sub_category'] ?></td>
                                             <td><?= $item['price'] ?></td>
-                                            <td><?= $item['avail'] ? 'Available' : 'Not Available' ?></td>
+                                            <td><?= $item['fl_avail']==1 ? 'On' : 'Off' ?></td>
                                             <td>
-                                                <a id="preview-<?=$item['id_produk'] ?>"
-                                                    class="btn btn-primary rounded-pill btn-sm" data-bs-toggle="modal"
+                                                <a id="preview-<?=$item['id_produk'] ?>" href="#"
+                                                    data-bs-toggle="modal"
                                                     data-bs-target="#previewModal" data-img="<?= $item['image']?>"
-                                                    data-deskripsi="<?= $item['description'] ?>">
-                                                    <i class="bi bi-pencil-square">preview</i>
+                                                    data-deskripsi="">
+                                                    <i class="bi bi-card-image"></i>
                                                 </a>
-                                                <a href="<?= base_url('Admin/editproduk/'.$item['id_produk']) ?>"
-                                                    class="bi bi-pencil-square">Edit </a>
-                                                <button type="button" class="btn btn-danger rounded-pill btn-sm">
-                                                    <i class="bi bi-trash">Hapus</i></button>
+                                                <a href="<?= base_url('admin/editproduk/'.$item['id_produk']) ?>"
+                                                    class=""><i class="bi bi-pencil-square"></i> </a>
+                                                <a href="#">
+                                                    <i class="bi bi-trash"></i>
+                                                </a>
                                             </td>
                                         </tr>
                                         <?php endforeach; ?>
@@ -75,7 +90,7 @@
 
 <!-- Modal ADD Produk -->
 <div class="modal fade" id="tambahModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Tambah Produk</h5>
@@ -83,67 +98,51 @@
             </div>
             <div class="modal-body">
                 <form enctype="multipart/form-data" method="POST" action="<?= base_url('ActionAdmin/store') ?>">
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Nama Produk</label>
-                        <input type="text" class="form-control" id="name" name="name" required>
+                    <div class="row">
+                        <div class="col-6 mb-2">
+                            <label for="name" class="form-label">Nama Produk</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <label for="name" class="form-label">Code</label>
+                            <input type="text" class="form-control" id="code_product" name="code_product" required>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="code" class="form-label">Kode</label>
-                        <input type="text" class="form-control" id="code" name="code" required>
+                    <div class="row">
+                        <div class="col-6 mb-2">
+                            <label for="name" class="form-label">Color</label>
+                            <input type="text" class="form-control" id="color" name="color" required>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <label for="name" class="form-label">Code Variant</label>
+                            <input type="text" class="form-control" id="code_variant" name="code_variant" required>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="code_variant" class="form-label">Kode Variant</label>
-                        <input type="text" class="form-control" id="code_variant" name="code_variant" required>
+                    <div class="row">
+                        <div class="col-6 mb-2">
+                            <label for="name" class="form-label">Kategori</label>
+                            <input type="text" class="form-control" id="category" name="category" required>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <label for="name" class="form-label">Sub</label>
+                            <input type="text" class="form-control" id="subcategory" name="subcategory" required>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="color" class="form-label">Warna</label>
-                        <input type="text" class="form-control" id="color" name="color" required>
+                    <div class="row">
+                        <div class="col-6 mb-2">
+                            <label for="name" class="form-label">Main Image</label>
+                            <input type="file" class="form-control" id="mainimage" name="mainimage" required>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <label for="name" class="form-label">Gallery</label>
+                            <input type="file" class="form-control" id="galleryimage" name="galleryimage" multiple required>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="size" class="form-label">Ukuran</label>
-                        <select name="size" id="size" class="form-control">
-                            <option value="4">S</option>
-                            <option value="3">M</option>
-                            <option value="2">L</option>
-                            <option value="1">XL</option>
-                            <option value="0">XXL</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="stock" class="form-label">Stok</label>
-                        <input type="number" class="form-control" id="stock" name="stock" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="category" class="form-label">Kategori</label>
-                        <select name="category" id="category" class="form-control">
-                            <option value="2">Atasan</option>
-                            <option value="1">Outer</option>
-                            <option value="0">Tas</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="sub_category" class="form-label">Sub Kategoti</label>
-                        <input type="text" class="form-control" id="sub_category" name="sub_category" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="price" class="form-label">Harga</label>
-                        <input type="number" class="form-control" id="price" name="price" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="image" class="form-label">Gambar Produk</label>
-                        <input type="file" class="form-control" id="image" name="image" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="description" class="form-label">Deskripsi</label>
-                        <textarea class="form-control" id="description" name="description" rows="3"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="avail" class="form-label">Ketersediaan</label>
-                        <select name="avail" id="avail" class="form-control">
-                            <option value="1">Tersedia</option>
-                            <option value="0">Tidak Tersedia</option>
-                        </select>
+                    <div class="row">
+                        <div class="col-12 mb-2">
+                            <label for="name" class="form-label">Deskripsi</label>
+                            <textarea name="description" id="description"></textarea>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>

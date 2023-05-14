@@ -6,15 +6,40 @@ use CodeIgniter\Model;
 
 class ProductsModel extends Model
 {
-  protected $table = 'products';
-    protected $primaryKey = 'id_produk';
-    protected $allowedFields = [
-        'name', 'code', 'code_variant', 'color', 'size', 'stock',
-        'category', 'sub_category', 'price', 'image', 'description', 'avail'
-    ];
+  public function produks()
+  {
+    $query = "SELECT * FROM `products` LEFT JOIN `stock` ON stock.product_id = products.id_produk";
+    $db = db_connect();
+    $result = $db->query($query);
+    return $result->getResultArray();
+  }
+
+  public function tambah_produks()
+  {
+    /*
+      nama
+      code(auto)
+      color
+      variant
+      category
+      sub
+      image
+      gallery
+      desc
+      avail
+
+      size
+      stock
+      price
+      dt_input
+      id_input **/ 
+
+      
+  }
 
   public function produk_category($category)
   {
+    
     $query = "SELECT * from products where category ='".$category."'";
     $db = db_connect();
     $result = $db->query($query);

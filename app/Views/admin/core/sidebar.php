@@ -3,7 +3,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="<?=base_url()?>/Admin/dashboard">
+        <a class="nav-link " href="<?=base_url()?>admin/dashboard">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
@@ -12,7 +12,7 @@
       <li class="nav-heading">Pages</li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="<?=base_url()?>/Admin/produk">
+        <a class="nav-link collapsed" href="<?=base_url()?>admin/produk">
           <i class="bi bi-card-list"></i>
           <span>Produk</span>
         </a>

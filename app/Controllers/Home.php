@@ -12,19 +12,19 @@ class Home extends BaseController
     public function landingpage()
     {
         $session = session();
-        $data['title']='landingpage';
+        $data['title']='WAKUTEKA - Enthusiasm meet Style';
         return view('user/core/header',$data).view('user/core/navbar').view('user/landingpage').view('user/core/foot').view('user/core/footer');
     }
 
     public function login()
     {
-        $data['title']='login';
+        $data['title']='WAKUTEKA - Login';
         return view('user/core/header',$data).view('user/login').view('user/core/footer');
     }
 
     public function register()
     {
-        $data['title']='register';
+        $data['title']='WAKUTEKA - Register';
         return view('user/core/header',$data).view('user/register').view('user/core/footer');
     }
     public function collection($category = "")
@@ -35,7 +35,7 @@ class Home extends BaseController
         }else{
             $data['products'] = $model->findAll();
         }
-        $data['title']='produk';
+        $data['title']='WAKUTEKA - Collection';
         return view('user/core/header',$data).view('user/core/navbar').view('user/produk').view('user/core/foot').view('user/core/footer');
     }
 

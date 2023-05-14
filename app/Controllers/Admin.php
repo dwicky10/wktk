@@ -24,7 +24,7 @@ class Admin extends BaseController
     {
         $data['title']='Produk';
         $model = new ProductsModel();
-        $data['products'] = $model->findAll();
+        $data['products'] = $model->produks();
         return view('admin/core/header',$data).view('admin/core/navbar').view('admin/core/sidebar').view('admin/produk').view('admin/core/footer');
         
     }

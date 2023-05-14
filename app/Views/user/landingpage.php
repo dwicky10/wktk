@@ -1,29 +1,29 @@
 
 <div class="container bg-secondary bg-opacity-25">
-  <div id="carouselExample" class="carousel slide mt-2">
+  <div id="carousel-banner" class="carousel slide mt-2" data-bs-ride="carousel">
   <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="<?=base_url()?>/assets/img/banner/tokpedbanner1-REV1.png" class="d-block w-100" alt="...">
+    <div class="carousel-item active" data-bs-interval="2000">
+      <img src="<?=base_url()?>/assets/img/banner/tokpedbanner1-REV1.png" class="d-block w-100" alt="..." >
     </div>
-    <div class="carousel-item">
-      <img src="<?=base_url()?>/assets/img/banner/tokpedbanner1-REV1-bw.png" class="d-block w-100" alt="...">
+    <div class="carousel-item" data-bs-interval="2000" >
+      <img src="<?=base_url()?>/assets/img/banner/tokpedbanner1-REV1-bw.png" class="d-block w-100" alt="..." >
     </div>
-    <div class="carousel-item">
-      <img src="<?=base_url()?>/assets/img/banner/tokpedbanner1-REV1-bw2.png" class="d-block w-100" alt="...">
+    <div class="carousel-item" data-bs-interval="2000" >
+      <img src="<?=base_url()?>/assets/img/banner/tokpedbanner1-REV1-bw2.png" class="d-block w-100" alt="..." >
     </div>
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+  <button class="carousel-control-prev" type="button" data-bs-target="#carousel-banner" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
   </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+  <button class="carousel-control-next" type="button" data-bs-target="#carousel-banner" data-bs-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
 </div>
 
 </div>
-
+<!-- 
 <div class="container-fluid text-center bg-dark bg-opacity-25">
   <div class="row align-items-start mt-5">
     <div class="col mt-3">
@@ -64,4 +64,4 @@
       <a href="custom" class="btn btn-primary">Pesan Disini</a>
     </div>
   </div>
-</div>
+</div> -->
