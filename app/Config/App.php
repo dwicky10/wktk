@@ -18,7 +18,7 @@ class App extends BaseConfig
      *    http://example.com/
      */
     // public string $baseURL = 'http://192.168.1.4/wakuteka-web/public/';
-    public string $baseURL = 'http://localhost/wktk/public';
+    public string $baseURL = 'http://localhost:8080/wktk/public';
 
     /**
      * Allowed Hostnames in the Site URL other than the hostname in the baseURL.
@@ -60,7 +60,8 @@ class App extends BaseConfig
      *
      * WARNING: If you set this to 'PATH_INFO', URIs will always be URL-decoded!
      */
-    public string $uriProtocol = 'REQUEST_URI';
+    public string $uriProtocol = 'PATH_INFO';
+    // public string $uriProtocol = 'REQUEST_URI';
 
     /**
      * --------------------------------------------------------------------------

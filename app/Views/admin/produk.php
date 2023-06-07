@@ -55,22 +55,46 @@
                                                 <?= $item['code'] ?> - <?= $item['code_variant'] ?>
                                                 </td>
                                             <td><?= $item['color'] ?> <br> <?= $item['size'] ?></td>
-                                            <td><?= $item['stock'] ?> </td>
+                                            <td>
+                                                <?= $item['stock'] ?>
+                                                <a href="#"
+                                                id="updatestok-<?=$item['id_produk'] ?>"
+                                                data-productid="<?=$item['id_produk'] ?>"
+                                                data-counter="<?=$item['counter'] ?>"
+                                                data-stock="<?=$item['stock'] ?>"
+                                                data-bs-toggle="modal" data-bs-target="#updatestokModal">
+                                                    <i class="bi bi-pencil-square"></i>
+                                                </a>
+                                            </td>
                                             <td><?= $item['category'] ?> <br> 
                                                 <?= $item['sub_category'] ?></td>
                                             <td><?= $item['price'] ?></td>
-                                            <td><?= $item['fl_avail']==1 ? 'On' : 'Off' ?></td>
                                             <td>
-                                                <a id="preview-<?=$item['id_produk'] ?>" href="#"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#previewModal" data-img="<?= $item['image']?>"
-                                                    data-deskripsi="">
+                                                <a href="#"
+                                                id="updateonoff-<?=$item['id_produk'] ?>"
+                                                data-idproduk="<?= $item['id_produk'] ?>"
+                                                data-flavail="<?= $item['fl_avail'] ?>"
+                                                >
+                                                    <?= $item['fl_avail']==1 ? 'On' : 'Off' ?>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="#"
+                                                id="preview-<?=$item['id_produk'] ?>" 
+                                                data-bs-toggle="modal" data-bs-target="#previewModal"
+                                                data-img="<?= $item['image']?>" >
                                                     <i class="bi bi-card-image"></i>
                                                 </a>
                                                 <a href="<?= base_url('admin/editproduk/'.$item['id_produk']) ?>"
                                                     class=""><i class="bi bi-pencil-square"></i> </a>
                                                 <a href="#">
                                                     <i class="bi bi-trash"></i>
+                                                </a>
+                                                <a href="#"
+                                                id="tambahstok-<?=$item['id_produk'] ?>"
+                                                data-productid="<?=$item['id_produk'] ?>"
+                                                data-bs-toggle="modal" data-bs-target="#tambahstokModal">
+                                                    <i class="bi bi-plus"></i>
                                                 </a>
                                             </td>
                                         </tr>
@@ -97,51 +121,51 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form enctype="multipart/form-data" method="POST" action="<?= base_url('ActionAdmin/store') ?>">
+                <form enctype="multipart/form-data" method="POST" action="<?= base_url('ActionAdmin/tambah_produks') ?>">
                     <div class="row">
                         <div class="col-6 mb-2">
                             <label for="name" class="form-label">Nama Produk</label>
-                            <input type="text" class="form-control" id="name" name="name" required>
+                            <input type="text" class="form-control" id="name" name="name">
                         </div>
                         <div class="col-6 mb-2">
                             <label for="name" class="form-label">Code</label>
-                            <input type="text" class="form-control" id="code_product" name="code_product" required>
+                            <input type="text" class="form-control" id="code_product" name="code_product">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-6 mb-2">
                             <label for="name" class="form-label">Color</label>
-                            <input type="text" class="form-control" id="color" name="color" required>
+                            <input type="text" class="form-control" id="color" name="color">
                         </div>
                         <div class="col-6 mb-2">
                             <label for="name" class="form-label">Code Variant</label>
-                            <input type="text" class="form-control" id="code_variant" name="code_variant" required>
+                            <input type="text" class="form-control" id="code_variant" name="code_variant">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-6 mb-2">
                             <label for="name" class="form-label">Kategori</label>
-                            <input type="text" class="form-control" id="category" name="category" required>
+                            <input type="text" class="form-control" id="category" name="category">
                         </div>
                         <div class="col-6 mb-2">
                             <label for="name" class="form-label">Sub</label>
-                            <input type="text" class="form-control" id="subcategory" name="subcategory" required>
+                            <input type="text" class="form-control" id="subcategory" name="subcategory">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-6 mb-2">
                             <label for="name" class="form-label">Main Image</label>
-                            <input type="file" class="form-control" id="mainimage" name="mainimage" required>
+                            <input type="file" class="form-control" id="mainimage" name="mainimage">
                         </div>
                         <div class="col-6 mb-2">
                             <label for="name" class="form-label">Gallery</label>
-                            <input type="file" class="form-control" id="galleryimage" name="galleryimage" multiple required>
+                            <input type="file" class="form-control" id="galleryimage" name="galleryimage[]" multiple>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12 mb-2">
                             <label for="name" class="form-label">Deskripsi</label>
-                            <textarea name="description" id="description"></textarea>
+                            <textarea name="description" id="descriptiontiny"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -181,17 +205,109 @@
     </div>
 </div>
 
+<div class="modal fade" id="tambahstokModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Tambah Stok</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form enctype="multipart/form-data" method="POST" action="<?= base_url('ActionAdmin/tambah_stok') ?>">
+                    <div class="row">
+                        <div class="col-6 mb-2">
+                            <label for="name" class="form-label">product_id</label>
+                            <input type="text" class="form-control" id="product_id_tambahstok" name="product_id">
+                        </div>
+                        <div class="col-6 mb-2">
+                            <label for="name" class="form-label">size</label>
+                            <input type="text" class="form-control" id="size" name="size">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 mb-2">
+                            <label for="name" class="form-label">stock</label>
+                            <input type="text" class="form-control" id="product_id" name="stock">
+                        </div>
+                        <div class="col-6 mb-2">
+                            <label for="name" class="form-label">price</label>
+                            <input type="text" class="form-control" id="size" name="price">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="updatestokModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Tambah Stok</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form enctype="multipart/form-data" method="POST" action="<?= base_url('ActionAdmin/update_stok') ?>">
+                    <div class="row">
+                        <div class="col-6 mb-2">
+                            <label for="name" class="form-label">counter</label>
+                            <input type="text" class="form-control" id="counter_updatestock" name="counter">
+                        </div>
+                        <div class="col-6 mb-2">
+                            <label for="name" class="form-label">stock</label>
+                            <input type="text" class="form-control" id="stock_updatestock" name="stock">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <script>
     $(document).ready(function () {
         $('#myTable').DataTable();
     });
+
     $("a[id^='preview-']").click(function () {
         var img = $(this).attr('data-img');
         var description = $(this).attr('data-deskripsi');
-        console.log(description)
         $('#preview_img').attr('src', '/wakuteka-web/public/assets/img/produk/' + img);
         $('#preview_deskripsi').html(description);
+    });
 
+    $("a[id^='tambahstok-']").click(function () {
+        var produk_id = $(this).attr('data-productid');
+        $('#product_id_tambahstok').val(produk_id);
+    });
 
+    $("a[id^='updatestok-']").click(function () {
+        var counter = $(this).attr('data-counter');
+        var stock = $(this).attr('data-stock');
+        $('#counter_updatestock').val(counter);
+        $('#stock_updatestock').val(stock);
+    });
+
+    $("a[id^='updateonoff-']").click(function () {
+        // $.ajax({
+        //     type: "POST",
+        //     url: "submit.php",
+        //     data: { name: name, email: email, message: message },
+        //     success: function(response){
+        //         $("#successMessage").text(response);
+        //     },
+        //     error: function(){
+        //         $("#errorMessage").text("There was an error submitting the form.");
+        //     }
+        // });
     });
 </script>

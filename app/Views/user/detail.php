@@ -53,7 +53,7 @@
             </div>
             <div class="row mb-2">
                 <div class="col-md-12">
-                    <p class="h6 fw-bold ">Rp. <?=number_format($products['0']['price'],0,",",".") ?></p>
+                    <p class="h6 fw-bold" id="display_price">Rp. <?=number_format($stock['0']['price'],0,",",".") ?></p>
                 </div>
             </div>
             <div class="row mb-2">
@@ -67,7 +67,9 @@
                             } 
                     ?>
                     <input type="radio" class="btn-check" name="options" id="size<?=$items['counter']?>"
-                        data-stock="<?=$items['stock']?>" <?=$disabled?>>
+                        data-stock="<?=$items['stock']?>"
+                        data-price="Rp. <?=number_format($items['price'],0,",",".") ?>" <?=$disabled?>
+                        data-counter="<?=$items['counter']?>">
                     <label class="btn btn-outline-dark me-2 mb-2"
                         for="size<?=$items['counter']?>"><?=$items['size']?></label>
                     <?php } ?>
@@ -77,15 +79,19 @@
                 <div class="row mb-2">
                     <p class="mb-1"> Quantity <span class="text-danger" id="total_stock"></span> </p>
                     <div class="col-md-5 p-1 ">
-                        <select class="form-select" name="select_stock" id="select_stock" disabled></select>
+                        <select class="form-select" name="total[0]" id="total" disabled></select>
                     </div>
                     <div class="col-md-3 p-1">
-                        <a class="btn btn-outline-danger w-100" href="#"> <i class="bi bi-cart"></i> Cart </a>
+                        <a class="btn btn-outline-danger w-100" id="btn_wishlist"
+                            href="<?=base_url()?>home/addtocart/<?=$stock['0']['counter']?>" disabled>
+                            <i class="bi bi-cart"></i> Cart
+                        </a>
                     </div>
                     <div class="col-md-4 p-1">
-                        <input type="hidden" name="id_product" id="id_product">
-                        <input type="hidden" name="id_product" id="id_product">
-                        <button class="btn btn-primary w-100" type="submit"> <i class="bi bi-bag-check"></i> Checkout </button>
+                        <input type="hidden" name="id_product[0]" id="id_product">
+                        <button id="btn_checkout" class="btn btn-primary w-100" type="submit" disabled> <i
+                                class="bi bi-bag-check"></i> Checkout
+                        </button>
                     </div>
                 </div>
             </form>
@@ -114,17 +120,15 @@
                                     <strong>WORK HOUR</strong>
                                 </button>
                             </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse"
+                            <div id="collapseTwo" class="accordion-collapse collapse" <div class="accordion-body">
                                 data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    Senin - Jumat : 08:30 - 20:00<br>
-                                    Sabtu - Minggu : 09:00 - 18:00<br>
-                                    Pemesanan setelah jam 15.00 dikirim esok hari.<br>
-                                    Hari Sabtu dan Minggu hanya melayani pemesanan saja, tidak ada pengiriman barang.
-                                    <br><br>
-                                    #wktk<br>
-                                    #weebslookscools
-                                </div>
+                                Senin - Jumat : 08:30 - 20:00<br>
+                                Sabtu - Minggu : 09:00 - 18:00<br>
+                                Pemesanan setelah jam 15.00 dikirim esok hari.<br>
+                                Hari Sabtu dan Minggu hanya melayani pemesanan saja, tidak ada pengiriman barang.
+                                <br><br>
+                                #wktk<br>
+                                #weebslookscools
                             </div>
                         </div>
                     </div>
@@ -133,17 +137,39 @@
         </div>
     </div>
 </div>
+</div>
 <script>
-    $(document).ready(function () {
-        $("input[id^='size']").click(function () {
-            var i = $(this).attr("data-stock");
-            var selectOptions = "";
-            for (var j = 1; j <= i; j++) {
-                selectOptions += '<option value="' + j + '">' + j + '</option>';
-            }
-            $("#select_stock").html(selectOptions);
-            $("#total_stock").html("(Stock : "+i+")");
-            $("#select_stock").removeAttr("disabled");
-        });
+$(document).ready(function() {
+    $("input[id^='size']").click(function() {
+        var i = $(this).attr("data-stock");
+        var price = $(this).attr("data-price");
+        var counter = $(this).attr("data-counter");
+
+        var selectOptions = "";
+        for (var j = 1; j <= i; j++) {
+            selectOptions += '<option value="' + j + '">' + j + '</option>';
+        }
+        $("#total").html(selectOptions);
+        $("#total_stock").html("(Stock : " + i + ")");
+        $("#display_price").html(price);
+        $("#total").removeAttr("disabled");
+
+        $("#btn_wishlist").removeAttr("disabled");
+        var link = "<?=base_url()?>" + "home/addtocart/" + counter;
+        $("#btn_wishlist").attr("href", link);
+
+        $("#btn_checkout").removeAttr("disabled");
+
+        $("#id_product").val(counter);
+        $("#total").val("1");
     });
+});
+
+$("#total").change(function() {
+    var jumlah = $(this).val();
+    var link = $("#btn_wishlist").attr("href");
+    var empty = "";
+    $("#btn_wishlist").attr("href", "");
+    $("#btn_wishlist").attr("href", link + "/" + jumlah);
+});
 </script>

@@ -43,6 +43,9 @@ $routes->get('/news', 'Home::news');
 $routes->get('/checkout', 'Home::checkout');
 
 $routes->get('/login', 'Home::login');
+$routes->get('/setting', 'Home::setting');
+$routes->get('/histori', 'Home::histori');
+
 
 /*
  * --------------------------------------------------------------------
